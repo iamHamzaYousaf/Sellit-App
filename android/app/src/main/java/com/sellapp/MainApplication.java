@@ -3,6 +3,7 @@ package com.sellapp;
 import android.app.Application;
 
 import com.facebook.react.ReactApplication;
+import com.reactnativecommunity.asyncstorage.AsyncStoragePackage;
 import com.facebook.react.ReactNativeHost;
 import com.facebook.react.ReactPackage;
 import com.facebook.react.shell.MainReactPackage;
@@ -25,7 +26,8 @@ import com.reactnativenavigation.NavigationApplication;
 //     @Override
 //     protected List<ReactPackage> getPackages() {
 //       return Arrays.<ReactPackage>asList(
-//           new MainReactPackage()
+//           new MainReactPackage(),
+//           
 //       );
 //     }
 
@@ -60,6 +62,7 @@ public class MainApplication extends NavigationApplication {
          // Add additional packages you require here
          // No need to add RnnPackage and MainReactPackage
          return Arrays.<ReactPackage>asList(
+              new AsyncStoragePackage()
              // eg. new VectorIconsPackage()
             // new VectorIconsPackage(),
             // new ImagePickerPackage(),
