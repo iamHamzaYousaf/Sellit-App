@@ -82,3 +82,65 @@ export const autoSignIn = (refToken) => {
     }
 
 }
+
+export function getUserPosts(UID){
+
+    const request = axios(`${FIREBASEURL}/articles.json?orderBy=\"uid\"&equalTo=\"${UID}\"`)
+        .then( response => {
+            let articles = [];
+
+            for(let key in response.data){
+                articles.push({
+                    ...response.data[key],
+                    id: key
+                })
+            }
+            return articles
+        })
+        return {
+            type: GET_USER_POSTS,
+            payload: request
+        }
+}
+
+export const deleteUserpost = (POSTID, USERDATA) => {
+
+    const promise = new Promise((resolve,reject)=>{
+        const URL = `${FIREBASEURL}/articles/${POSTID}.json`
+
+        const request = axios({
+            method:'DELETE',
+            url: `${URL}?auth=${USERDATA.token}s`
+        }).then( response => {
+            resolve({deletePost:true})
+        }).catch(e => {
+            const signIn = autoSignIn(USERDATA.refToken);
+
+            signIn.payload.then( response =>{
+                let newTokens = {
+                    token: response.id_token,
+                    refToken: response.refresh_token,
+                    uid: response.user_id
+                }
+
+                setTokens(newTokens,()=>{
+                    axios({
+                        method:'DELETE',
+                        url: `${URL}?auth=${USERDATA.token}`
+                    }).then(()=>{
+                        resolve({
+                            userData: newTokens,
+                            deletePost: true
+                        })
+                    })
+                })
+            })
+        })
+    })
+
+    return {
+        type:DELETE_USER_POST,
+        payload: promise
+    }
+
+}

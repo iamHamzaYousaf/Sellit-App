@@ -70,7 +70,6 @@ export const navigatorDeepLink = (event, $this) =>{
 
 
 export const getTokens = (cb) => {
-   // AsyncStorage.clear();
     AsyncStorage.multiGet([
         '@sellitApp@token',
         '@sellitApp@refreshToken',

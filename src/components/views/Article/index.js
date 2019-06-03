@@ -17,7 +17,7 @@ const Article= (props) => {
             <Image
                 resizeMode={"cover"}
                 style={styles.articleImage}
-                source={{uri:'https://loremflickr.com/400/400/girl,brazil,dog'}}
+                source={{uri:`https://loremflickr.com/400/400/dog`}}
             />
             <Text style={styles.priceTag}>
                 $ {props.ArticleData.price}
@@ -60,7 +60,7 @@ const Article= (props) => {
 
     return (
         <ScrollView style={styles.articleContainer}>
-            {articleImage()}
+            {articleImage(props)}
             {articleText()}
             {ownerNfo()}
         </ScrollView>

@@ -20,7 +20,7 @@ const BlockItem = (props) => {
             <Image
                 resizeMode={"cover"}
                 style={styles.itemImage}
-                source={{uri:'https://loremflickr.com/400/400/girl,brazil,dog'}}
+                source={{uri:`https://loremflickr.com/400/400/dog`}}
             />
         </View>
     )
