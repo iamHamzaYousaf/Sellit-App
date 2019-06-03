@@ -2,15 +2,16 @@ import { Navigation } from 'react-native-navigation';
 import ConfigureStore from './src/components/Store/config';
 import { Provider } from 'react-redux';
 
-
 import Login from './src/components/views/Login';
 import Home from './src/components/views/Home';
 import AddPost from './src/components/views/Admin/AddPost';
+import NotAllow from './src/components/views/Admin/AddPost/notallow';
 import SidedrawerComponenent from './src/components/views/Sidedrawer';
 import UserPosts from './src/components/views/Admin/UserPosts';
+import Article from './src/components/views/Article';
+
 
 const store = ConfigureStore();
-
 
 Navigation.registerComponent(
   "sellitApp.Login",
@@ -48,6 +49,21 @@ Navigation.registerComponent(
   store,
   Provider
 );
+Navigation.registerComponent(
+  "sellitApp.Article",
+  ()=>
+  Article,
+  store,
+  Provider
+);
+Navigation.registerComponent(
+  "sellitApp.NotAllow",
+  ()=>
+  NotAllow,
+  store,
+  Provider
+);
+
 
 
 

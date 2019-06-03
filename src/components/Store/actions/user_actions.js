@@ -1,7 +1,9 @@
 import {
     REGISTER_USER,
     SIGN_USER,
-    AUTO_SIGN_IN
+    AUTO_SIGN_IN,
+    GET_USER_POSTS,
+    DELETE_USER_POST
 } from '../types';
 
 import axios from 'axios';
@@ -80,4 +82,3 @@ export const autoSignIn = (refToken) => {
     }
 
 }
-
